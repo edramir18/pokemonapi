@@ -21,6 +21,12 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerJSDoc));
 app.get('/', (_, res) => res.status(200).json({msg: 'OK'}));
 
 /**
+ * Routes
+ */
+const pokemon = require('./routes/pokemon');
+app.use('/pokemon', pokemon);
+
+/**
  * Listener
  */
 const port = 3000;
