@@ -1,0 +1,63 @@
+components:
+  schemas:
+    Pokemon:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: array
+          items:
+            $ref: '#/components/schemas/Type'
+        gender:
+          type: object
+          properties:
+            male:
+              type: number
+              format: float
+            female:
+              type: number
+              format: float
+        national_number:
+          type: integer
+          format: int32
+        region:
+          $ref: '#/components/schemas/Region'
+        region_number:
+          type: integer
+          format: int32
+        category:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+        egg_groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/Egg'
+    Category:
+      type: string
+      enum:
+      - Snake
+      - Grass
+      - Lizard
+      - Rock
+    Egg:
+      type: string
+      enum:
+      - Monster
+      - Grass
+    Type:
+      type: string
+      enum:
+      - dark
+      - poison
+      - fire
+      - water
+      - bug
+      - grass
+      - flying
+      - normal
+    Region:
+      type: string
+      enum:
+      - Kanto

@@ -1,0 +1,88 @@
+paths:
+  /pokemon:
+    get:
+      tags:
+      - pokemon
+      summary: List all pokemons
+      responses:
+        200:
+          description: Pokemon list 
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pokemon'
+    post:
+      tags:
+      - pokemon
+      summary: Create a new pokemon
+      requestBody:
+        description: Pokemon object to be created
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pokemon'
+        required: true
+      responses:
+        200:
+          description: Pokemon created successfully
+        405:
+          description: Invalid Input
+  /pokemon/{_id}:
+    put:
+      tags:
+      - pokemon
+      summary: Update a pokemon by id
+      parameters:
+      - in: path
+        name: _id
+        schema:
+          type: integer
+        description: Pokemon id to be updated
+      requestBody:
+        description: Pokemon object to be updated
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pokemon'
+        required: true
+      responses:
+        200:
+          description: Pokemon updated successfully
+        404:
+          description: Pokemon id not found
+    get:
+      tags:
+      - pokemon
+      summary: Get a pokemon by id
+      parameters:
+      - in: path
+        name: _id
+        schema:
+          type: integer
+        description: Pokemon ids to be found
+      responses:
+        200:
+          description: Pokemon founded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pokemon'
+        404:
+          description: Id not found
+    delete:
+      tags:
+      - pokemon
+      summary: Delete a pokemon by id
+      parameters:
+      - in: path
+        name: _id
+        schema:
+          type: integer
+        description: Pokemon id to be deleted
+      responses:
+        200:
+          description: Pokemon deleted successfully
+        404:
+          description: Pokemon id not found

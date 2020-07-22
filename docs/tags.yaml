@@ -1,0 +1,5 @@
+tags:
+- name: pokemon
+  description: Operations about pokemons
+- name: attack
+  description: Operations about pokemon attacks
